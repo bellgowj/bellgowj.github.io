@@ -1,0 +1,35 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rendered Content</title>
+  <style>
+    body {
+      font-family: Segoe UI, Arial, sans-serif;
+      margin: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Read everything after the #
+  const encoded = window.location.hash.slice(1);
+
+  if (encoded) {
+    try {
+      const html = decodeURIComponent(encoded);
+      document.body.insertAdjacentHTML("beforeend", html);
+    } catch (e) {
+      document.body.textContent = "Invalid encoded content.";
+    }
+  } else {
+    document.body.textContent = "No content provided.";
+  }
+</script>
+
+</body>
+</html>
+``
+
