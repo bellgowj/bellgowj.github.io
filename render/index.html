@@ -13,24 +13,21 @@
 </head>
 <body>
 
-
 <script>
-  const b64 = window.location.hash.slice(1);
+  // Read everything after the #
+  const encoded = window.location.hash.slice(1);
 
-  if (b64) {
+  if (encoded) {
     try {
-      const html = atob(b64);
+      const html = decodeURIComponent(encoded);
       document.body.insertAdjacentHTML("beforeend", html);
     } catch (e) {
-      document.body.textContent = "Invalid content.";
+      document.body.textContent = "Invalid encoded content.";
     }
   } else {
     document.body.textContent = "No content provided.";
   }
-
 </script>
 
 </body>
 </html>
-``
-
